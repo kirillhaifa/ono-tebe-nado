@@ -116,14 +116,6 @@
   letter-spacing: 0;
 }
 
-/*.cover__bottom-container {
-  margin-right: 50px;
-  padding-bottom: 50px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}*/
-
 .cover__description {
   display: grid;
   grid-template-columns: 75% 25%;
