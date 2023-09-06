@@ -3,14 +3,13 @@
   /*Лого в макете находится не поцентру страницы
     иного способа расположить контейнеры не придумал. 
     возможно есть способ проще, но этот тоже работает*/
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 1fr min-content 1fr;
   grid-template-rows: 1fr;
-  margin: 92px 51px 92px 49px;
+  margin: 92px 51px 89px 49px;
 }
 
 .header__menu {
-  display: flex;
-  align-items: center;
+  align-self: center;
   font-weight: 400;
   font-size: 18px;
 }
@@ -20,19 +19,20 @@
 }
 
 .header__links-list-item {
-  min-width: 150px;
-  margin: 16px;
+  margin: 0px 26px 6px 8px;
   list-style-type: circle;
 }
 
+.link-underline {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
 .header__links-list-item_no-bullit {
-  margin: 16px 16px 0 0;
+  margin: 0 23px 0 2px;
   list-style-type: none;
 }
 
 .header__logo {
-  width: 148px;
-  height: 105px;
   margin: 0 auto 4px auto;
 }
 
@@ -41,36 +41,38 @@
   height: 105px;
 }
 
-.header__address_container {
-  display: flex;
-  justify-content: end;
-}
-
 .header__address {
-  width: 240px;
+  justify-self: end;
+  max-width: 240px;
   margin-top: 5px;
   margin-bottom: 7px;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
   line-height: 135%;
+  text-align: left;
 }
 
 .cover {
+  position: relative;
   width: 100%;
-  margin: auto;
-  margin-bottom: 180px;
   background-image: url("../images/cover.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .overlay {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 .title {
-  margin: 0 50px 125px 50px;
+  position: relative;
+  z-index: 2;
+  margin: 0 50px 126px 50px;
   padding-top: 165px;
 }
 
@@ -93,7 +95,7 @@
 .cover__title.second-line_fist-part {
   display: block;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   letter-spacing: 30px;
   text-align: center;
 }
@@ -117,6 +119,8 @@
 }
 
 .cover__description {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 75% 25%;
   grid-template-areas: "cover__description-text bet-button";
@@ -137,6 +141,7 @@
   text-transform: uppercase;
   word-spacing: 0;
   background: transparent;
+  cursor: pointer;
 }
 
 .cover__description-text {
@@ -171,12 +176,19 @@
 }
 
 .lots__card-list-item {
+  /*flex-grow: 1;*/
+  /*в ревью было замечание категории "можно лучше"
+  использовать flex-grow: 1; 
+  в сочетании с фиксированной шириной карточки, 
+  но при добавлении свойства карточки 
+  перестают сохранять заданную ширину*/
   width: 430px;
   height: 450px;
   margin-bottom: 30px;
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -184,6 +196,8 @@
 }
 
 .card__title {
+  position: relative;
+  z-index: 2;
   padding: 50px 40px 0 40px;
   color: #fff;
   font-size: 22px;
@@ -194,6 +208,8 @@
 }
 
 .card__text {
+  position: relative;
+  z-index: 2;
   padding: 0 40px 50px 40px;
   color: #fff;
   font-weight: 400;
@@ -201,7 +217,7 @@
   line-height: 120%;
 }
 
-.card__container.card_type_film {
+.card.card_type_film {
   height: 100%;
   background-image: url("../images/card-lot-01.jpg");
   background-repeat: no-repeat;
@@ -209,14 +225,14 @@
   background-size: 100%;
 }
 
-.card__container.card_type_book {
+.card.card_type_book {
   height: 100%;
   background-image: url("../images/card-lot-02.jpg");
   background-position: center;
   background-size: 100%;
 }
 
-.card__container.card_type_picture {
+.card.card_type_picture {
   height: 100%;
   background-image: url("../images/card-lot-03.jpg");
   background-position: center;
@@ -224,7 +240,7 @@
 }
 
 .lots__look-more-link {
-  margin: 0 0 2px 40px;
+  margin: 1px 0 2px 40px;
   color: #000;
   font-weight: 400;
   font-size: 20px;
@@ -259,7 +275,8 @@
 
 .about__title {
   grid-area: about__title;
-  margin: auto 0 auto 0;
+  margin: auto 0;
+  padding-top: 10px;
   font-size: 40px;
   text-transform: uppercase;
 }
@@ -278,7 +295,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  height: 97px;
   margin: 185px 50px 90px 50px;
 }
 
@@ -288,8 +304,7 @@
 }
 
 .footer__address {
-  width: 240px;
-  height: 97px;
+  max-width: 240px;
   margin-bottom: 7px;
   font-weight: 400;
   font-size: 18px;
@@ -302,15 +317,10 @@
   list-style-type: none;
 }
 
-.footer__links-list-item_no-bullit {
-  cursor: pointer;
-}
-
 .footer__social-list {
   display: flex;
   justify-content: space-between;
-  width: 240px;
-  height: 48px;
+  gap: 48px;
 }
 
 .footer__social-list-item {
